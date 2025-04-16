@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <style>
+      td{
+        text-align: center;
+        font-size: 40px;
+        width: 700px;
+        background-color: rgb(201, 223, 243);
+        border: 3px;
+    }
+ 
+    
+    </style>
+     <table>
+    <tr>
+        <td><a href="bai4.html">Bài 1</a></td>
+        <td><a href="bai5.html">Bài 2</a></td>
+        <td><a href="Bai6.1.html">Bài 3</a></td>
+        <td><a href="Bai6.2.html">Bài 4</a></td>
+    </tr>
+</table>
+  <meta charset="UTF-8">
+  <title>Form Đăng Ký</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .form-container {
+      width: 500px;
+      margin: 40px auto;
+      padding: 20px 30px;
+      border: 1px solid #999;
+    }
+
+    h2 {
+      text-align: center;
+      color: #80004d;
+      margin-bottom: 20px;
+    }
+
+    .form-row {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: inline-block;
+      width: 90px;
+      vertical-align: top;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      width: 200px;
+      padding: 4px;
+      font-size: 14px;
+    }
+
+    .form-row select {
+      width: auto;
+    }
+
+    .form-row .checkbox-group {
+      display: inline-block;
+    }
+
+    .form-row textarea {
+      width: 200px;
+      height: 60px;
+    }
+
+    .form-buttons {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 4px 12px;
+      margin: 0 5px;
+      font-size: 14px;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-left: 90px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>FORM ĐĂNG KÝ</h2>
+  <form id="registerForm" onsubmit="return validateForm()">
+    
+    <div class="form-row">
+      <label for="ho">Họ</label>
+      <input type="text" id="ho" name="ho">
+      <div class="error" id="errorHo"></div>
+    </div>
+
+    <div class="form-row">
+      <label for="ten">Tên</label>
+      <input type="text" id="ten" name="ten">
+      <div class="error" id="errorTen"></div>
+    </div>
+
+    <div class="form-row">
+      <label>Ngày sinh:</label>
+      Ngày 
+      <select name="ngay">
+        <script>
+          for(let i = 1; i <= 31; i++) {
+            document.write(`<option value="${i}">${i}</option>`);
+          }
+        </script>
+      </select>
+      Tháng 
+      <select name="thang">
+        <script>
+          for(let i = 1; i <= 12; i++) {
+            document.write(`<option value="${i}">${i}</option>`);
+          }
+        </script>
+      </select>
+      Năm 
+      <select name="nam">
+        <script>
+          for(let i = 1980; i <= 2025; i++) {
+            document.write(`<option value="${i}">${i}</option>`);
+          }
+        </script>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label>Giới tính</label>
+      <input type="radio" name="gioitinh" value="Nam" checked> Nam
+      <input type="radio" name="gioitinh" value="Nữ"> Nữ
+    </div>
+
+    <div class="form-row">
+      <label for="sdt">Số điện thoại</label>
+      <input type="text" id="sdt" name="sdt">
+      <div class="error" id="errorSdt"></div>
+    </div>
+
+    <div class="form-row">
+      <label>Sở thích</label>
+      <div class="checkbox-group">
+        <input type="checkbox" name="sothich" value="docsach" checked> Đọc sách
+        <input type="checkbox" name="sothich" value="xemphim"> Xem phim
+        <input type="checkbox" name="sothich" value="nghenhac"> Nghe nhạc
+        <input type="checkbox" name="sothich" value="dabong"> Đá bóng
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="khac">Khác</label>
+      <textarea id="khac" name="khac"></textarea>
+    </div>
+
+    <div class="form-buttons">
+      <input type="submit" value="Submit">
+      <input type="reset" value="Reset" onclick="resetErrors()">
+    </div>
+
+  </form>
+</div>
+
+<script>
+  function validateForm() {
+    let valid = true;
+    const ho = document.getElementById("ho").value.trim();
+    const ten = document.getElementById("ten").value.trim();
+    const sdt = document.getElementById("sdt").value.trim();
+
+    document.getElementById("errorHo").textContent = "";
+    document.getElementById("errorTen").textContent = "";
+    document.getElementById("errorSdt").textContent = "";
+
+    if (!ho) {
+      document.getElementById("errorHo").textContent = "Vui lòng nhập họ.";
+      valid = false;
+    }
+
+    if (!ten) {
+      document.getElementById("errorTen").textContent = "Vui lòng nhập tên.";
+      valid = false;
+    }
+
+    if (!/^\d{10}$/.test(sdt)) {
+      document.getElementById("errorSdt").textContent = "Số điện thoại phải là số và đủ 10 chữ số.";
+      valid = false;
+    }
+
+    return valid;
+  }
+
+  function resetErrors() {
+    document.getElementById("errorHo").textContent = "";
+    document.getElementById("errorTen").textContent = "";
+    document.getElementById("errorSdt").textContent = "";
+  }
+</script>
+
+</body>
+</html>
+

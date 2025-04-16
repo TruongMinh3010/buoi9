@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <style>
+        td{
+          text-align: center;
+          font-size: 40px;
+          width: 700px;
+          background-color: rgb(201, 223, 243);
+          border: 3px;
+      }
+   
+      
+      </style>
+    <table>
+        <tr>
+            <td><a href="bai4.html">Bài 1</a></td>
+            <td><a href="bai5.html">Bài 2</a></td>
+            <td><a href="Bai6.1.html">Bài 3</a></td>
+            <td><a href="Bai6.2.html">Bài 4</a></td>
+        </tr>
+    </table>
+    <meta charset="UTF-8">
+    <title>Phép Tính</title>
+    <style>
+        input {
+            width: 40px;
+            text-align: center;
+        }
+
+        .result {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .history {
+            margin-top: 20px;
+        }
+
+        .history span {
+            margin-right: 20px;
+        }
+
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h3>các phép toán</h3>
+
+<!-- PHÉP CỘNG -->
+<p>
+    phép cộng
+    <input type="number" id="add1"> +
+    <input type="number" id="add2"> =
+    <span class="result" id="addResult"></span>
+    <button onclick="tinh('cong')">=</button>
+</p>
+
+<!-- PHÉP TRỪ -->
+<p>
+    phép trừ
+    <input type="number" id="sub1"> -
+    <input type="number" id="sub2"> =
+    <span class="result" id="subResult"></span>
+    <button onclick="tinh('tru')">=</button>
+</p>
+
+<!-- PHÉP NHÂN -->
+<p>
+    phép nhân
+    <input type="number" id="mul1"> *
+    <input type="number" id="mul2"> =
+    <span class="result" id="mulResult"></span>
+    <button onclick="tinh('nhan')">=</button>
+</p>
+
+<!-- PHÉP CHIA -->
+<p>
+    phép chia
+    <input type="number" id="div1"> /
+    <input type="number" id="div2"> =
+    <span class="result" id="divResult"></span>
+    <button onclick="tinh('chia')">=</button>
+</p>
+
+<!-- KẾT QUẢ -->
+<h3>Các phép toán vừa thực hiện</h3>
+<div class="history" id="history"></div>
+
+<script>
+    function tinh(phep) {
+        let a, b, ketQua, bieuThuc = "", span = document.createElement("span");
+
+        // Xóa lớp highlight khỏi các dòng cũ
+        const allSpans = document.querySelectorAll(".history span");
+        allSpans.forEach(s => s.classList.remove("highlight"));
+
+        if (phep === 'cong') {
+            a = parseFloat(document.getElementById("add1").value);
+            b = parseFloat(document.getElementById("add2").value);
+            ketQua = a + b;
+            document.getElementById("addResult").textContent = ketQua;
+            bieuThuc = `PHÉP CỘNG ${a}+${b}=${ketQua}`;
+        } else if (phep === 'tru') {
+            a = parseFloat(document.getElementById("sub1").value);
+            b = parseFloat(document.getElementById("sub2").value);
+            ketQua = a - b;
+            document.getElementById("subResult").textContent = ketQua;
+            bieuThuc = `PHÉP TRỪ ${a}-${b}=${ketQua}`;
+        } else if (phep === 'nhan') {
+            a = parseFloat(document.getElementById("mul1").value);
+            b = parseFloat(document.getElementById("mul2").value);
+            ketQua = a * b;
+            document.getElementById("mulResult").textContent = ketQua;
+            bieuThuc = `PHÉP NHÂN ${a}*${b}=${ketQua}`;
+        } else if (phep === 'chia') {
+            a = parseFloat(document.getElementById("div1").value);
+            b = parseFloat(document.getElementById("div2").value);
+            if (b === 0) {
+                ketQua = "Không chia được";
+            } else {
+                ketQua = a / b;
+            }
+            document.getElementById("divResult").textContent = ketQua;
+            bieuThuc = `PHÉP CHIA ${a}/${b}=${ketQua}`;
+        }
+
+        span.textContent = bieuThuc;
+        span.classList.add("highlight");
+        document.getElementById("history").appendChild(span);
+    }
+</script>
+
+</body>
+</html>
