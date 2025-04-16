@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    td{
+      text-align: center;
+      font-size: 40px;
+      width: 700px;
+      background-color: rgb(201, 223, 243);
+      border: 3px;
+  }
+
+  
+  </style>
+  <table>
+    <tr>
+      <td><a href="bai4.html">Bài 1</a></td>
+      <td><a href="bai5.html">Bài 2</a></td>
+      <td><a href="Bai6.1.html">Bài 3</a></td>
+      <td><a href="Bai6.2.html">Bài 4</a></td>
+  </tr>
+</table>
+  <meta charset="UTF-8">
+  <title>Slideshow Ảnh</title>
+  <style>
+    .slideshow-container {
+      width: 600px;
+      position: relative;
+      margin: auto;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+    }
+
+    img {
+      width: 600px;
+      height: 450px;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 3px;
+      user-select: none;
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Slideshow ảnh</h2>
+
+<div class="slideshow-container">
+  <div class="slide">
+    <img src="https://i.pinimg.com/736x/1c/73/d1/1c73d158686aac6fc690a576fcefeda9.jpg" alt="Ảnh 1">
+  </div>
+  <div class="slide">
+    <img src="https://i.pinimg.com/736x/bc/d1/60/bcd1606233926c7262d6505a29c98a88.jpg" alt="Ảnh 2">
+  </div>
+  <div class="slide">
+    <img src="https://i.pinimg.com/736x/b3/ca/61/b3ca61e98c39fc8114ae47bd82c8ec71.jpg" alt="Ảnh 3">
+  </div>
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+</div>
+
+<script>
+  let slideIndex = 0;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function showSlides(n) {
+    const slides = document.getElementsByClassName("slide");
+    if (n >= slides.length) slideIndex = 0;
+    if (n < 0) slideIndex = slides.length - 1;
+
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    slides[slideIndex].style.display = "block";
+  }
+</script>
+
+</body>
+</html>
